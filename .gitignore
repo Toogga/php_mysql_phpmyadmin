@@ -1,0 +1,8 @@
+# Ignorer les fichiers socket MySQL
+*.sock
+db_server/mysql-phpmyadmin/data/*.sock
+
+# Ignorer les autres fichiers de configuration générés par MySQL
+db_server/mysql-phpmyadmin/data/*.cnf
+db_server/mysql-phpmyadmin/data/binlog.index
+db_server/mysql-phpmyadmin/data/ib_buffer_pool

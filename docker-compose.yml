@@ -1,0 +1,76 @@
+# version: '4.3'
+# A partir de : https://lucidar.me/en/docker/mysql-and-phpmyadmin-with-docker-compose/
+
+networks:
+    mysql-php:
+        name: mysql-php
+        # use the bridge driver
+        driver: bridge
+
+volumes:
+    mysqldata:
+        driver: local
+        driver_opts:
+            type: 'none'
+            o: 'bind'
+            device: './db_server/mysql-phpmyadmin/data'
+    # mysqlconf:
+    #     driver: local
+    #     driver_opts:
+    #         type: 'none'
+    #         o: 'bind'
+    #         device: './db_server/mysql-phpmyadmin/conf'
+services:
+    php:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      container_name: php8_0_2_apache #php73 #php80 #php73
+      depends_on:
+        - mysql
+      #image: php:8.0.2-apache #php:8.0.12-fpm-alpine #php:7.3-apache
+      volumes:
+        - ./source_site:/var/www/html/
+      ports:
+        - 81:80
+      networks:
+          mysql-php:
+            # aliases:
+            #     - php
+    
+    mysql:
+        image: mysql:8.0
+        container_name: mysql8
+        environment:
+            MYSQL_ROOT_PASSWORD: root_password
+            MYSQL_DATABASE: database_name
+            MYSQL_USER: user_name
+            MYSQL_PASSWORD: user_password
+        ports:
+            - "3306:3306" #"6033:3306"
+        volumes:
+            - mysqldata:/var/lib/mysql
+            # - mysqlconf:/etc/mysql/conf.d
+        networks:
+          mysql-php:
+            # aliases:
+            #     - mysql
+
+
+    phpmyadmin:
+        image: phpmyadmin:5.2.0
+        container_name: phpmyadmin
+        # links:
+        #     - mysql
+        depends_on:
+            - mysql
+        environment:
+            PMA_HOST: mysql
+            PMA_PORT: 3306
+        ports:
+            - 8081:80
+        networks:
+          mysql-php:
+            # aliases:
+            #     - phpmyadmin
+
