@@ -1,16 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-</head>
-<body>
-        <h1><a href="info.php">Info PHP</a></h1>
-        <h1><a href="mysqli_access.php">Connexion MYSQLI</a></h1>
-        <h1><a href="pdo_access.php">Connexion PDO</a></h1>
+<?php
+require_once 'classes/Compte.php';
 
-        <h1><a href="https://afpa.fr">Vers afpa.fr</a></h1>
-</body>
-</html>
+// On instancie le compte
+$compte1 = new Compte('Benoit', 500);
+
+// On écrit dans le propriété titulaire
+//$compte1->titulaire = 'Benoit';
+
+// On ecrit dans la propriété solde
+//$compte1->solde = 'Bonjour';
+
+// On depose 1OO€
+$compte1->deposer(100);
+
+?>
+<p><?php echo $compte1->voirSolde();?></p> 
+<?php
+
+$compte1->retirer(700);
+
+var_dump($compte1);
+
+//$compte2 = new Compte('Robert');
+//$compte2-> titulaire = 'Robert';
+//$compte2->solde = 389.25;
+
+//var_dump($compte2);
