@@ -4,6 +4,8 @@ require_once 'classes/Compte.php';
 // On instancie le compte
 $compte1 = new Compte('Benoit', 500);
 
+$compte1->setSolde(200);
+
 // On écrit dans le propriété titulaire
 //$compte1->titulaire = 'Benoit';
 
@@ -12,6 +14,8 @@ $compte1 = new Compte('Benoit', 500);
 
 // On depose 1OO€
 $compte1->deposer(100);
+
+echo $compte1->getTitulaire();
 
 ?>
 <p><?php echo $compte1->voirSolde();?></p> 
