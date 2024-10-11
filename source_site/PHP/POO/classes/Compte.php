@@ -19,6 +19,9 @@ class Compte
      */
     private $solde;
 
+    // Constantes
+    const TAUX_INTERETS = 5;
+
     // Méthodes
     /**
     * constructeur du compte bancaire
@@ -34,9 +37,17 @@ class Compte
         // On attribue le montant à la propriété solde
         $this->solde = $montant;
 
-        echo $this->decouvert();
-
     }
+
+    /**
+     * Méthode magique pour la convertion en chaine de charactères
+     * @return string
+     */
+    public function __toString()
+    {
+        return "<hr/> Vous visualisez le compte de $this->titulaire, le solde est de $this->solde euros";  
+    }
+
 
     // Accesseurs
 
