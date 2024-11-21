@@ -11,7 +11,7 @@
     <h1><a href="mysqli_access.php">Connexion MYSQLI</a></h1>
     <h1><a href="pdo_access.php">Connexion PDO</a></h1>
     <h1><a href="exercice_test_et_tuto.html">Exercice test et tuto</a></h1>
-
+    <h1><a href="./FilRougeClass/index.php">Vers Class User</a></h1>
 
     <h1><a href="https://afpa.fr">Vers afpa.fr</a></h1>
     

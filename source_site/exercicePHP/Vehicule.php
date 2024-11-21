@@ -5,21 +5,13 @@ class Voiture {
     // Attributs privés
 
     private $immatriculation;
-
     private $couleur;
-
     private $poids;
-
     private $puissance;
-
     private $capaciteReservoir;
-
     private $niveauEssence;
-
     private $nombrePlaces;
-
     private $assure;
-
     private $messageTableauDeBord;
 
 

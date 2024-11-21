@@ -73,4 +73,13 @@ services:
           mysql-php:
             # aliases:
             #     - phpmyadmin
+    
 
+    mailhog:
+        image: mailhog/mailhog
+        container_name: mailhog
+        logging:
+            driver: 'none'
+        ports:
+            - "1025:1025" # smtp
+            - "8025:8025" # Boîte mail
